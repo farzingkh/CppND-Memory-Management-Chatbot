@@ -56,6 +56,21 @@ ChatBot::ChatBot(ChatBot &cbot)
     _chatLogic = cbot._chatLogic;
 }
 
+// Copy Constructor
+ChatBot::ChatBot(ChatBot &&cbot)
+{
+    std::cout << "ChatBot Move Constructor" << std::endl;
+    _image = cbot._image;
+    _currentNode = cbot._currentNode;
+    _rootNode = cbot._rootNode;
+    _chatLogic = cbot._chatLogic;
+    cbot._image = nullptr;
+    cbot._currentNode = nullptr;
+    cbot._rootNode = nullptr;
+    cbot._chatLogic = nullptr;
+}
+
+
 ////
 //// EOF STUDENT CODE
 
