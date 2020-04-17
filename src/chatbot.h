@@ -29,6 +29,7 @@ public:
 
     //// STUDENT CODE
     ////
+    ChatBot(ChatBot& cbot);          // Copy Constructor
 
     ////
     //// EOF STUDENT CODE
