@@ -49,7 +49,7 @@ ChatBot::~ChatBot()
 ChatBot::ChatBot(ChatBot &cbot)
 {
     std::cout << "ChatBot Copy Constructor" << std::endl;
-    wxBitmap* _image = (wxBitmap*)malloc(sizeof(wxBitmap));
+    _image = (wxBitmap *)malloc(sizeof(wxBitmap));
     *_image = *cbot._image;
     _currentNode = cbot._currentNode;
     _rootNode = cbot._rootNode;
@@ -70,6 +70,21 @@ ChatBot::ChatBot(ChatBot &&cbot)
     cbot._chatLogic = nullptr;
 }
 
+// Copy assignment Constructor
+ChatBot &operator=(const ChatBot &cbot)
+{
+    if (this == &cbot)
+    {
+        return *this;
+    }
+    delete _image;
+    _image = new wxBitmap();
+    *_image = *cbot._image;
+    _currentNode = cbot._currentNode;
+    _rootNode = cbot._rootNode;
+    _chatLogic = cbot._chatLogic;
+    return *this;
+}
 
 ////
 //// EOF STUDENT CODE
