@@ -40,6 +40,7 @@ ChatLogic::~ChatLogic()
     delete _chatBot;
 
     // delete all nodes
+    /*
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
         delete *it;
@@ -50,6 +51,7 @@ ChatLogic::~ChatLogic()
     {
         delete *it;
     }
+    */
 
     ////
     //// EOF STUDENT CODE
