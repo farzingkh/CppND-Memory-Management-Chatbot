@@ -4,11 +4,11 @@
 #include <vector>
 #include <string>
 #include "chatgui.h"
+#include "graphnode.h"
 
 // forward declarations
 class ChatBot;
 class GraphEdge;
-class GraphNode;
 
 class ChatLogic
 {
