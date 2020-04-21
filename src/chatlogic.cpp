@@ -18,7 +18,7 @@ ChatLogic::ChatLogic()
     ////
     
     std::cout << "ChatLogic Constructor " << std::endl;
-    std::cout << "ChatLogic is created at " << this << std::endl;
+    //std::cout << "ChatLogic is created at " << this << std::endl;
     /*
     // create instance of chatbot
     _chatBot = new ChatBot("../images/chatbot.png");
@@ -233,25 +233,25 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 void ChatLogic::SetPanelDialogHandle(ChatBotPanelDialog *panelDialog)
 {
     _panelDialog = panelDialog;
-    std::cout << "ChatLogic at " << this << " _panelDialog points to " << this->_panelDialog << std::endl;
+    //std::cout << "ChatLogic at " << this << " _panelDialog points to " << this->_panelDialog << std::endl;
 }
 
 void ChatLogic::SetChatbotHandle(ChatBot *chatbot)
 {
-    std::cout << "Set ChatLogic at " << this << " _chatBot point to " << chatbot << std::endl;
+    //std::cout << "Set ChatLogic at " << this << " _chatBot point to " << chatbot << std::endl;
     _chatBot = chatbot;
-    std::cout << "ChatLogic at " << this << " _chatBot points to " << this->_chatBot << std::endl;
+    //std::cout << "ChatLogic at " << this << " _chatBot points to " << this->_chatBot << std::endl;
 }
 
 void ChatLogic::SendMessageToChatbot(std::string message)
 {
-    std::cout << "ChatLogic at " << this << " _chatBot points to " << this->_chatBot << std::endl;
+    //std::cout << "ChatLogic at " << this << " _chatBot points to " << this->_chatBot << std::endl;
     _chatBot->ReceiveMessageFromUser(message);
 }
 
 void ChatLogic::SendMessageToUser(std::string message)
 {
-    std::cout << "ChatLogic at " << this << " _panelDialog points to " << this->_panelDialog << std::endl;
+    //std::cout << "ChatLogic at " << this << " _panelDialog points to " << this->_panelDialog << std::endl;
     _panelDialog->PrintChatbotResponse(message);
 }
 

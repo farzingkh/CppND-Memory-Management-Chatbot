@@ -49,7 +49,12 @@ ChatBot::~ChatBot()
 ChatBot::ChatBot(const ChatBot &cbot)
 {
     std::cout << "ChatBot Copy Constructor" << std::endl;
-    delete _image;
+    // deallocate heap memory if already exist
+    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    {
+        delete _image;
+        _image = NULL;
+    }
     _image = new wxBitmap();
     *_image = *cbot._image;
     _currentNode = cbot._currentNode;
@@ -79,7 +84,12 @@ ChatBot &ChatBot::operator=(const ChatBot &cbot)
         return *this;
     }
     std::cout << "ChatBot Copy Assignment Constructor" << std::endl;
-    delete _image;
+    // deallocate heap memory if already exist
+    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    {
+        delete _image;
+        _image = NULL;
+    }
     _image = new wxBitmap();
     *_image = *cbot._image;
     _currentNode = cbot._currentNode;
@@ -88,7 +98,7 @@ ChatBot &ChatBot::operator=(const ChatBot &cbot)
     return *this;
 }
 
-// Copy assignment Constructor
+// Move assignment Constructor
 ChatBot &ChatBot::operator=(ChatBot &&cbot)
 {
     if (this == &cbot)
@@ -96,7 +106,12 @@ ChatBot &ChatBot::operator=(ChatBot &&cbot)
         return *this;
     }
     std::cout << "ChatBot Move Assignment Constructor" << std::endl;
-    delete _image;
+    // deallocate heap memory if already exist
+    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    {
+        delete _image;
+        _image = NULL;
+    }
 
     _image = cbot._image;
     _currentNode = cbot._currentNode;
