@@ -49,14 +49,16 @@ ChatBot::~ChatBot()
 ChatBot::ChatBot(const ChatBot &cbot)
 {
     std::cout << "ChatBot Copy Constructor" << std::endl;
-    // deallocate heap memory if already exist
-    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    // check if the chatbot being copied has an image
+    if (cbot._image != NULL)
     {
-        delete _image;
+        _image = new wxBitmap();
+        *_image = *cbot._image;
+    }
+    else
+    {
         _image = NULL;
     }
-    _image = new wxBitmap();
-    *_image = *cbot._image;
     _currentNode = cbot._currentNode;
     _rootNode = cbot._rootNode;
     _chatLogic = cbot._chatLogic;
@@ -70,7 +72,7 @@ ChatBot::ChatBot(ChatBot &&cbot)
     _currentNode = cbot._currentNode;
     _rootNode = cbot._rootNode;
     _chatLogic = cbot._chatLogic;
-    cbot._image = nullptr;
+    cbot._image = NULL;
     cbot._currentNode = nullptr;
     cbot._rootNode = nullptr;
     cbot._chatLogic = nullptr;
@@ -84,14 +86,16 @@ ChatBot &ChatBot::operator=(const ChatBot &cbot)
         return *this;
     }
     std::cout << "ChatBot Copy Assignment Constructor" << std::endl;
-    // deallocate heap memory if already exist
-    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    // check if the chatbot being copied has an image
+    if (cbot._image != NULL)
     {
-        delete _image;
+        _image = new wxBitmap();
+        *_image = *cbot._image;
+    }
+    else
+    {
         _image = NULL;
     }
-    _image = new wxBitmap();
-    *_image = *cbot._image;
     _currentNode = cbot._currentNode;
     _rootNode = cbot._rootNode;
     _chatLogic = cbot._chatLogic;
@@ -106,19 +110,13 @@ ChatBot &ChatBot::operator=(ChatBot &&cbot)
         return *this;
     }
     std::cout << "ChatBot Move Assignment Constructor" << std::endl;
-    // deallocate heap memory if already exist
-    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-    {
-        delete _image;
-        _image = NULL;
-    }
 
     _image = cbot._image;
     _currentNode = cbot._currentNode;
     _rootNode = cbot._rootNode;
     _chatLogic = cbot._chatLogic;
 
-    cbot._image = nullptr;
+    cbot._image = NULL;
     cbot._currentNode = nullptr;
     cbot._rootNode = nullptr;
     cbot._chatLogic = nullptr;
